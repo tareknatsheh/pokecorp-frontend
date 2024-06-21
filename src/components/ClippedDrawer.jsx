@@ -19,6 +19,9 @@ export default function ClippedDrawer(props) {
   const handleListItemClick = (event, item, index) => {
     setSelectedIndex(index);
     props.handleTabChoice(item)
+    if(item.dir === "docs"){
+      window.location = "/docs"
+    }
   };
   return (
     <Box sx={{ display: 'flex' }}>
