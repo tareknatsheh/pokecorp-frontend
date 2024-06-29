@@ -65,14 +65,13 @@ const PokemonsList = () => {
 
     return (
         <>
-            <p>Filter pokemons</p>
             <PokemonFilter
                 onFilterSubmit={handleFilterChange}
             />
             {isLoading && <p>Loading....</p>}
             {error && <Alert severity="error">{error}</Alert>}
             <Box sx={{ display: 'inline-flex', flexWrap: 'wrap' }}>
-                {poks.length && poks.map(pokemon => <PokemonCard key={pokemon["id"]} pokemon={pokemon} />)}
+                {poks.length !== 0 && poks.map(pokemon => <PokemonCard key={pokemon["id"]} pokemon={pokemon} />)}
             </Box>
         </>
     )

@@ -30,7 +30,7 @@ const allTypes = [
 ]
 
 const PokemonFilter = ({ onFilterSubmit }) => {
-    const [type, setType] = useState('all');
+    const [type, setType] = useState('grass');
     const [chosenTrainerId, setChosenTrainerId] = useState(0);
 
     const [trainers, setTrainers] = useState([{ "id": 0, "name": "all" }]);
@@ -87,7 +87,7 @@ const PokemonFilter = ({ onFilterSubmit }) => {
                     </Select>
                 </FormControl>
 
-                {trainers.length && <FormControl sx={{ mx: 1, minWidth: 100 }}>
+                {trainers.length !== 0 && <FormControl sx={{ mx: 1, minWidth: 100 }}>
                     <InputLabel id="select-by-trainer">Trainer</InputLabel>
                     <Select
                         labelId="select-by-trainer"
