@@ -16,21 +16,32 @@ const TrainersList = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
+        let isMounted = true; // flag to check if the component is still mounted
+    
         const getAllTrainers = async () => {
             try {
-                let result = await fetch(`${apiUrl}/trainers`)
+                const result = await fetch(`${apiUrl}/trainers`);
                 if (!result.ok) {
                     throw new Error(`Error: ${result.statusText}`);
                 }
-                result = await result.json();
-                setTrainers(result)
-                setError(null);
+                const data = await result.json();
+                if (isMounted) {
+                    setTrainers(data);
+                    setError(null);
+                }
             } catch (err) {
-                setError(err.message);
+                if (isMounted) {
+                    setError(err.message);
+                }
             }
-        }
-        getAllTrainers()
-    }, [])
+        };
+    
+        getAllTrainers();
+    
+        return () => {
+            isMounted = false; // Cleanup the flag when component unmounts
+        };
+    }, []);
 
 
     return (

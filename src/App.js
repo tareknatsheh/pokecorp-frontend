@@ -14,7 +14,7 @@ const drawerOptions = [
     dir: "trainers"
   },
   {
-    name: "Documentation",
+    name: "API Documentation",
     dir: "docs"
   }
 ]

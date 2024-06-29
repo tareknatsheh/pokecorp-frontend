@@ -8,7 +8,7 @@ const apiUrl = process.env.REACT_APP_API_URL;
 const PokemonCard = ({ pokemon }) => {
 
     return (
-        <Card sx={{ m: 1 }}>
+        <Card sx={{ m: 1, minWidth: 120 }}>
             <CardActionArea>
                 <CardMedia
                     component="img"
